@@ -2,7 +2,7 @@
 <html>
 <head><meta charset="utf-8" />
 
-<title>D:\work\Sentiment Analysis\Equity Sentiments\Github\Equity Sentiments Testing</title>
+<title>Sentiment Analysis Testing</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -13139,12 +13139,11 @@ div#notebook {
 <span class="kn">from</span> <span class="nn">keras.preprocessing.sequence</span> <span class="k">import</span> <span class="n">pad_sequences</span>
 <span class="kn">from</span> <span class="nn">keras.models</span> <span class="k">import</span> <span class="n">Sequential</span>
 <span class="kn">from</span> <span class="nn">keras.utils</span> <span class="k">import</span> <span class="n">to_categorical</span>
-<span class="kn">from</span> <span class="nn">keras.layers</span> <span class="k">import</span> <span class="n">Dense</span>
+<span class="kn">from</span> <span class="nn">keras.layers</span> <span class="k">import</span> <span class="n">Dense</span><span class="p">,</span> <span class="n">Dropout</span>
 <span class="kn">from</span> <span class="nn">keras.layers</span> <span class="k">import</span> <span class="n">Flatten</span>
 <span class="kn">from</span> <span class="nn">keras.layers</span> <span class="k">import</span> <span class="n">Embedding</span>
 <span class="kn">from</span> <span class="nn">keras.layers.convolutional</span> <span class="k">import</span> <span class="n">Conv1D</span>
 <span class="kn">from</span> <span class="nn">keras.layers.convolutional</span> <span class="k">import</span> <span class="n">MaxPooling1D</span>
-<span class="c1">#from keras.layers.convolutional import GlobalMaxPooling1D</span>
 <span class="kn">from</span> <span class="nn">numpy</span> <span class="k">import</span> <span class="n">array</span>
 <span class="kn">from</span> <span class="nn">gensim.models</span> <span class="k">import</span> <span class="n">Word2Vec</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -13240,7 +13239,7 @@ C:\Users\Derek Chong\AppData\Roaming\Python\Python37\site-packages\tensorboard\c
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">equities_reviews</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;equitylinestrain_v2.csv&#39;</span><span class="p">)</span>
@@ -13258,7 +13257,7 @@ C:\Users\Derek Chong\AppData\Roaming\Python\Python37\site-packages\tensorboard\c
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[5]:</div>
+    <div class="prompt output_prompt">Out[2]:</div>
 
 
 
@@ -13275,7 +13274,7 @@ C:\Users\Derek Chong\AppData\Roaming\Python\Python37\site-packages\tensorboard\c
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">equities_reviews</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -13291,7 +13290,7 @@ C:\Users\Derek Chong\AppData\Roaming\Python\Python37\site-packages\tensorboard\c
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[6]:</div>
+    <div class="prompt output_prompt">Out[3]:</div>
 
 
 
@@ -13417,7 +13416,7 @@ C:\Users\Derek Chong\AppData\Roaming\Python\Python37\site-packages\tensorboard\c
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
@@ -13434,13 +13433,13 @@ C:\Users\Derek Chong\AppData\Roaming\Python\Python37\site-packages\tensorboard\c
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[8]:</div>
+    <div class="prompt output_prompt">Out[4]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x15d31b022b0&gt;</pre>
+<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x198b7c0d978&gt;</pre>
 </div>
 
 </div>
@@ -13466,7 +13465,7 @@ C:\Users\Derek Chong\AppData\Roaming\Python\Python37\site-packages\tensorboard\c
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># preprocess text to remove HTML, punctuations etc.</span>
@@ -13494,7 +13493,7 @@ C:\Users\Derek Chong\AppData\Roaming\Python\Python37\site-packages\tensorboard\c
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">tag_re</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;[^&gt;]+&gt;&#39;</span><span class="p">)</span>
@@ -13510,7 +13509,7 @@ C:\Users\Derek Chong\AppData\Roaming\Python\Python37\site-packages\tensorboard\c
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">[]</span>
@@ -13532,7 +13531,7 @@ C:\Users\Derek Chong\AppData\Roaming\Python\Python37\site-packages\tensorboard\c
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[11]:</div>
+    <div class="prompt output_prompt">Out[7]:</div>
 
 
 
@@ -13549,7 +13548,7 @@ C:\Users\Derek Chong\AppData\Roaming\Python\Python37\site-packages\tensorboard\c
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># replacing sentiments into digits</span>
@@ -13559,7 +13558,11 @@ C:\Users\Derek Chong\AppData\Roaming\Python\Python37\site-packages\tensorboard\c
 
 <span class="n">y</span> <span class="o">=</span> <span class="n">equities_reviews</span><span class="p">[</span><span class="s1">&#39;sentiment&#39;</span><span class="p">]</span>
 
-<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">0</span> <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="s2">&quot;positive&quot;</span> <span class="k">else</span> <span class="p">(</span><span class="mi">1</span> <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="s1">&#39;neutral&#39;</span> <span class="k">else</span> <span class="mi">2</span><span class="p">),</span> <span class="n">y</span><span class="p">)))</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">y</span><span class="p">:</span> <span class="mi">0</span> <span class="k">if</span> <span class="n">y</span> <span class="o">==</span> <span class="s2">&quot;positive&quot;</span> <span class="k">else</span> <span class="p">(</span><span class="mi">1</span> <span class="k">if</span> <span class="n">y</span> <span class="o">==</span> <span class="s1">&#39;neutral&#39;</span> <span class="k">else</span> <span class="mi">2</span><span class="p">),</span> <span class="n">y</span><span class="p">)))</span>
+
+<span class="c1">#one hot encoding output</span>
+<span class="kn">from</span> <span class="nn">keras.utils</span> <span class="k">import</span> <span class="n">to_categorical</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">to_categorical</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -13569,7 +13572,7 @@ C:\Users\Derek Chong\AppData\Roaming\Python\Python37\site-packages\tensorboard\c
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># create training and testing data</span>
@@ -13584,7 +13587,549 @@ C:\Users\Derek Chong\AppData\Roaming\Python\Python37\site-packages\tensorboard\c
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">X_train</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[10]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[&#39; caglayan        istanbul  turkey tel                 fax                 website  www phillipcapital com tr dubai phillip futures dmcc member of the dubai gold and  commodities exchange  dgcx  unit no      plot no     white crown bldg  sheikh zayed road o box        dubai uae tel                   fax                     cambodia phillip bank plc ground floor of office centre         norodom blvd corner street     sangkat boeung keng kang    khan chamkamorn  phnom penh  cambodia tel                                      website  www phillipbank com kh         page       phillip securities research  singapore   thai beverage results   important information  this report is prepared and or distributed by phillip securities research pte ltd   phillip securifinancial advisers act  chapter     in singapore &#39;,
+ &#39;we leave our fy earnings relatively unchanged but impute the effective  based valuations  vs      previously  &#39;,
+ &#39;investors should carefully read and study the details of the derivative warrants in the prospectus before making investment decisions &#39;,
+ &#39;reduce  the total expected return of stock is defined as the sum of the percentage difference between the target price and the current price and  ii  the forward net dividend yields of the stock &#39;,
+ &#39;cgs cimb india  its associates and the analyst engaged in preparation of this research report have not managed or co managed public offering of securities for the subject company mentioned in the research report in the past    months &#39;,
+ &#39;by accepting this report  the recipient hereof represents and warrants that he is entitled to receive such report in accordance with the restrictions set  below  &#39;,
+ &#39;chk has no obligation to update its opinion or the information in this research report &#39;,
+ &#39;any failure to comply with these limitations may constitute violation of law &#39;,
+ &#39;no part of the compensation of the analyst was  is  or will be directly or indirectly related to the inclusion of specific recommendations or view in this report &#39;,
+ &#39;ltd  and cgs cimb securities  hong kong  limited by the monetary authority of singapore  under asic class order          and the securities and futures commission in hong kong  under asic class order          &#39;,
+ &#39;the analyst responsible for the production of this report hereby certifies that the views expressed herein accurately and exclusively reflect his or her personal views and opinions about any and all of the issuers or securities analysed in this report and were prepared independently and autonomously &#39;,
+ &#39;this report does not constitute  and should not be used as substitute for  tax  legal or investment advice &#39;,
+ &#39;in south korea  this report is for distribution only to professional investors under article      of the financial investment services and capital market  spain  this document is research report and it is addressed to institutional investors only &#39;,
+ &#39;important disclosures for included research analyses or reports of foreign research houses where the report contains research analyses or reports from foreign research house  please note recipients of the analyses or reports are to contact phillip securities research  and not the relevant foreign research house  in singapore at     north bridge road         raffles city tower  singapore         telephone number                in respect of any matters arising from  or in connection with  the analyses or reports  and  ii  to the extent that the analyses or reports are delivered to and intended to be received by any person in singapore who is not an accredited investor  expert investor or institutional investor  phillip securities research accepts legal responsibility for the contents of the analyses or reports &#39;,
+ &#39;faa e   section     obligation on disclosure of interest in specified products   and any other laws  regulations  notices  directive  guidelines  circulars and practice notes which are relates to the above  to the extent permitted by applicable laws  as may be amended from time to time  and any other laws  regulations  notices  directive  guidelines  circulars  and practice notes as we may notify you from time to time &#39;,
+ &#39;ltd   monetary authority of singapore south korea cgs cimb securities  hong kong  limited  korea branch  financial services commission and financial supervisory service thailand cgs cimb securities  thailand  co  ltd   securities and exchange commission thailand  reports relating to malaysia are produced by cimb as listed in the table below   country cimb entity regulated by malaysia cimb investment bank berhad  securities commission malaysia  other significant financial interests as of february          cgs cimb   cimb has proprietary position in the securities  which may include but not limited to shares  warrants  call warrants and or any other derivatives  in the following company or companies covered or recommended in this report ii   analyst disclosure  as of february           the analyst who prepared this report  and the associate has   have an interest in the securities  which may include but not limited to shares  warrants  call warrants and or any other derivatives  in the following company or companies covered or recommended in this report this report does not purport to contain all the information that prospective investor may require &#39;,
+ &#39;cgs cimb or cimb  as the case may be  may or may not issue regular reports on the subject matter of this report at any frequency and may cease to do so or change the periodicity of reports at any time &#39;,
+ &#39;accordingly  information may be available to phillip securities research  or persons associated with or connected to phillip securities research  including but not limited to its officers  directors  employees or persons involved in the issuance of this report  which is not reflected in this report  and phillip securities research  or persons associated with or connected to phillip securities research  including but not limited to its officers  directors  employees or persons involved in the issuance of this report  may  to the extent permitted by law  have acted upon or used the information prior to or immediately following its publication &#39;,
+ &#39;any such information or research contained in this report is subject to change  and phillip securities research shall not have any responsibility to maintain or update the information or research made available or to supply any corrections  updates or releases in connection therewith &#39;,
+ &#39;such opinions are subject to change without notice and cgs cimb thailand has no obligation to update its opinion or the information in this research report &#39;,
+ &#39;to the extent permitted by law  phillip securities research  or persons associated with or connected to phillip securities research  including but not limited to its officers  directors  employees or persons involved in the issuance of this report  may at any time engage in any of the above activities as set out above or otherwise hold an interest  whether material or not  in respect of companies and investments or related investments  which may be mentioned in this report &#39;,
+ &#39;this report is not intended for distribution  publication to or use by any person in any jurisdiction outside of singapore or any other jurisdiction as phillip securities research may determine in its absolute discretion &#39;,
+ &#39;as result  we see trading down by consumers into lower price point  which are the white spirits &#39;,
+ &#39;recipients should be aware that many of the products  which may be described in this report involve significant risks and may not be suitable for all investors  and that any decision to enter into transactions involving such products should not be made  unless all such risks are understood and an independent determination has been made that such transactions would be appropriate &#39;,
+ &#39;we have yet to see meaningful improvement &#39;,
+ &#39;we believe sales growth will continue to be stimulated by the upcoming thai elections  which are expected to be held in mar     and with of the thai beer market  as guided by the company  this bodes well for thbev beer volume growth &#39;,
+ &#39;this report should not be relied upon exclusively or as authoritative  without  been made available constitutes neither recommendation to enter into particular transaction  nor representation that any product described in this report is suitable or appropriate for the recipient &#39;,
+ &#39;if you have received this report by mistake  please delete or destroy it  and notify the sender immediately &#39;,
+ &#39;past performance is not reliable indicator of future performance &#39;,
+ &#39;securities to be reliable &#39;,
+ &#39;cgs cimb is not registered with the spanish comision nacional del mercado de valores to provide investment services &#39;,
+ &#39;any person who is not u institutional investor or major institutional investor must not rely on this communication &#39;,
+ &#39;management shared that it had cut down redundant office space  kick started the process to minimise its raw material costs and began improving its distribution network in order to enhance the freshness of its beer &#39;,
+ &#39;neutral neutral rating means investors should be positioned with neutral weight in this country relative to benchmark &#39;,
+ &#39;brewers  singapore   thai beverage  february                  figure    results comparison     sources  cgs cimb research  company reports    despite rallying ytd  thbev is still trading at cy p below its   year average mean of x  making it attractive  in our view &#39;,
+ &#39;for further information or to place an order in any of the above mentioned securities please contact registered representative of cgs cimb securities  usa  inc  cgs cimb securities  usa  inc  does not make market on other securities mentioned in the report &#39;,
+ &#39;sweden  this report contains only marketing information and has not been approved by the swedish financial supervisory authority &#39;,
+ &#39;this report does not take into account the particular investment objectives  financial situations  or needs of the recipients &#39;,
+ &#39;the securities of such company ies  may not be eligible for sale in all jurisdictions or to all categories of investors &#39;,
+ &#39;switzerland  this report has not been prepared in accordance with the recognized self regulatory minimal standards for research reports of banks  thailand  this report is issued and distributed by cgs  cimb thabe reliable  but their accuracy  completeness or correctness is not guaranteed  &#39;,
+ &#39;cg rating by the thai institute of directors association  thai iod  in       anti corruption      advanc  excellent  certified  aeonts  good a  ah  very good a  amata  excellent  declared  anan  excellent  declared  aot  excellent  declared  ap  excellent  certified  asp  very good  certified  banpu  excellent  certified  bay  excellent  certified  bbl  very good  certified  bch  good  certified  bcp   excellent  certified  bcpg  excellent  certified  bem  very good a  bdms  very good a  beauty  good a  bec  very good a    bgrim  very good  declared  bh   good a  bjc  very good  declared  bjchi  very good  certified  bpp  very good  declared  br   good  declared  bts   excellent  certified  cbg  very good a  ccet  good a  centel  very good  certified  chg  very good  declared  ck  excellent a  col  excellent  declared  cpall  very good  certified  cpf  excellent  certified  cpn   excellent  certified  delta   excellent a  demco  excellent  certified  ddd  very good  declared  dif  not available a  dtac  excellent  certified  ea  excellent a  ecl  very good  certified  egco   excellent  certified  epg  very good a  erw  very good a  gfpt   excellent  certified  ggc  excellent  certified  global  very good a  glow  very good  certified  gpsc  excellent  certified  gulf  very good a  gunkul  excellent  certified  hana   excellent  certified  hmpro   excellent  certified  hreit   excellent  certified ichi  excellent  declared  human  not available a  iii  good a  intuch   excellent  certified  irpc  excellent  certified  itd   very good a  ivl   excellent  certified  jasif  not available a  kbank   excellent  certified  kce   excellent  certified  kkp  excellent  certified  ksl  excellent  certified  ktb   excellent  certified  ktc  excellent  certified  lh   very good a  lpn  excellent  certified very good  certified  maco  very good a  major  very good a  makro  excellent  declared  malee  very good  certified  mc  very good  certified  mcot  excellent  certified  mega  very good a  mint   excellent  certified  mtc  excellent  declared  netbay  good a  planb  excellent  declared  plat  very good  certified  psh  excellent  certified  pstc  good  certified  ptt   excellent  certified  pttep   excellent  certified  pttgc   excellent  certified  qh  excellent  certified  ratch  excellent  certified  robins  excellent  certified  rs  very good a  rsp  not available a  samart   excellent a  sappe  very good  declared  sat  excellent  certified  sawad  very good a  sc  excellent  declared  scb   excellent  certified  scc  excellent  certified  scn  very good  certified  sf  good a  siri  very good  certified  spa   good a  spali   excellent a  sprc  excellent  certified  sta  very good  certified  stec  excellent a  svi  excellent  certified  synex  very good  declared  tasco  excellent  certified  tcap  excellent  certified  tipco  very good  certified  tisco   excellent  certified  tkn  very good  declared  tmb   excellent  certified  tnr  very good  declared  top   excellent  certified  tpch  good a  tpipp  good a  true  excellent  certified  tu  excellent  certified  tvo  very good  declared  uniq  good a  vgi  excellent  certified  wha  excellent  certified  whart  not available a  work  good a &#39;,
+ &#39;the delivery of this research report to any person in the united states of america is not recommendation to effect any transactions in the securities discussed herein  or an endorsement of any opinion expressed herein &#39;,
+ &#39;cgs cimb or cimb  as the case may be  may disclose the contents of this report to the company ies  covered by it and may have amended the contents of this report following such disclosure &#39;,
+ &#39;cgs cimb  cimb or their respective affiliates  including cgifhl  cimbg and their respective related corporations  may enter into an agreement with the company ies  covered in this report relating to the production of research reports &#39;,
+ &#39;faa d   mas notice on recommendation on investment products  notice no &#39;,
+ &#39;the distribution of this report is not an offer to buy or sell to any person within or outside prc or solicitation to any person within or outside of prc to buy or sell any instruments described herein &#39;,
+ &#39;brewers  singapore   thai beverage  february                   score range                          below    or no survey result description  excellent very good good a   united arab emirates  the distributor of this report has not been approved or licensed by the uae central bank or any other relevant licensing authorities or governmental agencies in the united arab emirates &#39;,
+ &#39;information barriers and other arrangements may be established where necessary to prevent conflicts of interests arising &#39;,
+ &#39;the survey of the iod is based on the information of company listed on the stock exchange of thailand and the market for alternative investment disclosed to the public and able to be accessed by general public investor &#39;,
+ &#39;the survey result is as of the date appearing in the corporate governance report of thai listed companies &#39;,
+ &#39;during our ground checks  we noted more initiabrand awareness &#39;,
+ &#39;in reviewing this research report  an investor should be aware that any or all of the foregoing  among other things  may give rise to real or potential conflicts of interest &#39;,
+ &#39;however  the analyst may receive compensation that is based on his their coverage of company ies  in the performance of his their duties or the performance of his their recommendations and the research personnel involved in the preparation of this report may also participate in the solicitation of the businesses as described above &#39;,
+ &#39;in fy    euromonitor estimated sabeco commanded     of total beer volume sales in vietnam &#39;,
+ &#39;investors are advised to make their own independent evaluation of the information contained in this research report  consider their own individual investment objectives  financial situation and particular needs and consult their own professional and financial advisers as to the legal  business  financial  tax and other aspects before participating in any transaction in respect of the securities of company ies  covered in this research report &#39;,
+ &#39;united kingdom and european economic area  eea   in the united kingdom and european economic area  this material is also being distributed by cgs cgs cgs cimb uk is authorized and regulated by the financial conduct authority and its registered office is at    knightsbridge  london  sw yb &#39;,
+ &#39;however  the compensation received by each such research analyst is based upon various factors  including kgi securities business of dealing in securities &#39;,
+ &#39;this report is not intended for distribution and or redistribution  publication to or use by any person in any jurisdiction outside singapore or any other jurisdiction as kgi securities may determine in its absolute discretion  where the distribution  publication or use of this report would be contrary to applicable law or would subject kgi securities and its connected persons  as defined in the financial advisers act  chapter     of singapore  to any registration  licensing or other requirements within such jurisdiction &#39;,
+ &#39;neither cgs cimb or cimb  as the case may be  nor any of their respective affiliates nor their related persons  including cgifhl  cimbg and their related corporations  shall be liable in any manner whatsoever for any consequences  including but not limited to any direct  indirect or consequential losses  loss of profits and damages  of any reliance thereon or usage thereof &#39;,
+ &#39;germany  this report is only directed at persons who are professional investors as defined in sec of the german securities trading act  wphg  &#39;,
+ &#39;cgs cimb india is registered with the national stock exchange of india limited and bse limited as trading and clearing member  merchant banking number  inm           under the securities and exchange board of india  stock brokers and sub brokers  regulations        in accordance with the provisions of regulation of the securities and exchange board of india  investment advisers  regulations        cgs cimb india is not required to seek registration  cimb india is registered with sebi  sebi registration number  inz           as research analyst  inh           pursuant to the sebi  research analysts  regulations         regulations   &#39;,
+ &#39;further  cgs cimbr  its affiliates and its related corporations do and seek to do business with the company ies  covered in this research report and may from time to time act as market maker or have assumed an underwriting commitment in specified products of such company ies   may sell them to or buy them from customers on principal basis and may also perform or seek to perform significant investment banking  advisory  underwriting or placement services for or relating to such company ies  as well as solicit such investment  advisory or other services from any entity mentioned in this report &#39;,
+ &#39;as result  the survey result may be changed after that date &#39;,
+ &#39;cgs cimbr has no obligation to update its opinion or the information in this research report &#39;,
+ &#39;ireland  cgs cimb is not an investment firm authorised in the republic of ireland and no part of this document should be construed as cgs cimb acting as  or otherwise claiming or representing to be  an investment firm authorised in the republic of ireland &#39;,
+ &#39;if the recipient of this research report is not an accredited investor  expert investor or institutional investor  cgs cimbr accepts legal responsibility for the contents of the report without any disclaimer limiting or otherwise curtailing such legal responsibility &#39;,
+ &#39;further  cgs cimb  cimb  their respective affiliates and their respective related corporations  including cgifhl  cimbg and their respective related corporations  do and seek to do business with the company ies  covered in this research report and may from time to time act as market maker or have assumed an underwriting commitment in securities of such company ies   may sell them to or buy them from customers on principal basis and may also perform or seek to perform significant investment banking  advisory  underwriting or placement services for or relating to such company ies  as well as solicit such investment  advisory or other services from any entity mentioned in this report &#39;,
+ &#39;cgs cimb securities  usa  inc  neither expects to receive nor intends to seek compensation for investment banking services from any of the company mentioned within the next   months &#39;,
+ &#39;the research report is of general nature and not personalised and does not constitute investment advice so  as the case may be  the recipient must seek proper advice before adopting any investment decision &#39;,
+ &#39;additionally  phillip securities research  or persons associated with or connected to phillip securities research  including but not limited to its officers  directors  employees or persons involved in the issuance of this report  may have provided advice or investment services to such companies and investments or related investments  as may be mentioned in this report &#39;,
+ &#39;spitzer chart for stock being researched     year data    thai beverage  thbev sp    brewers  singapore   thai beverage  february                     corporate governance report of thai listed companies  cgr  &#39;,
+ &#39;i securities to be reliable &#39;,
+ &#39;the company attributed the beat mainly to augmented advertising and marketing efforts post the new management team joining in aug    and to cost management &#39;,
+ &#39;any opinions  forecasts  assumptions  estimates  valuations and prices contained in this report are as of the date indicated and are subject to change at any time without prior notice &#39;,
+ &#39;the analyst from cgs cimb india engaged in preparation of this research report or his her relative do not have any financial interests in the subject company mentioned in this research report do not own    or more of the equity securities of the subject company mentioned in the research report as of the last day of the month preceding the publication of the research report do not have any material conflict of interest at the time of publication of the research report &#39;,
+ &#39;this report is being issued outside the united arab emirates to limited number of institutional investors and must not be provided to any person other than the original recipient and may not be reproduced or used for any other purpose &#39;,
+ &#39;any recovery for this rural or farming community will come from improvement in commodity prices such as rubber or tapioca &#39;,
+ &#39;  brewers  singapore   thai beverage  february                     bring on the pints  please   office of industrial economics reported that domestic beer sales rose      yoy to litres in dec     dec litres   taking  qcy   volume to litres        yoy vs litres in  qcy    &#39;,
+ &#39;a near term stimulus to demand will be national elections  possibly february or april next year  as this might boost some economic activity &#39;,
+ &#39;it also sponsored the saigon special beach festival       aside from raising brand awareness  sabeco aims to continue streamlining costs and focus on improving business productivity and efficiencies &#39;,
+ &#39;neither cgs cimb nor cimb accepts any  obligation to check or ensure that the contents of this report remain current  reliable or relevant    ii  ensure that the content of this report constitutes all the information prospective investor may require    iii  ensure the adequacy  accuracy  completeness  reliability or fairness of any views  opinions and information  and accordingly  cgs cimb  and cimb rsons and or employees  shall not be liable in any manner whatsoever for any consequences  including but not limited to any direct  indirect or consequential losses  loss of profits and damages  of any reliance thereon or usage thereof &#39;,
+ &#39;recommendation framework stock ratings definition   add   hold  be between    and positive     over the next    months &#39;,
+ &#39;by receiving or reading this report  you agree to be bound by the terms and limitations set out below &#39;,
+ &#39;    total return over the next    months  hold       to      total return over the next    months  sell         total return over the next    months disclaimer this report is provided for information only and is not an offer or solicitation to deal in securities or to enter into any legal relations  nor an advice or recommendation with respect to such securities &#39;,
+ &#39;high household leverage plus short work times in manufacturing sector e &#39;,
+ &#39;neither cgs cimb nor cimb has an obligation to update this report in the event of material change to the information contained in this report &#39;,
+ &#39;additional information is  subject to the duties of confidentiality  available on request &#39;,
+ &#39;we note that thbev embarked on similarly aggressive marketing strategies to revamp changin      and reconfigured its distribution strategies to lower packaging costs and improve the freshness of the chang beer &#39;,
+ &#39;we cut our fy earnings by     &#39;,
+ &#39;the result  therefore  is from the perspective of third party &#39;,
+ &#39;phillip securities research  or persons associated with or connected to phillip securities research  including but not limited to its officers  directors  employees or persons involved in the issuance of this report  may provide an array of financial services to large number of corporations in singapore and worldwide  including but not limited to commercial   investment banking activities  including sponsorship  financial advisory or underwriting activities   brokerage or securities trading activities &#39;,
+ &#39;whilst every effort is made to ensure that statements of facts made in this report are accurate  all estimates  projections  forecasts  expressions of opinion and other subjective judgments contained in this report are based on assumptions considered to be reasonable as of the date of the document in which they are contained and must not be construed as representation that the matters referred to therein will occur &#39;,
+ &#39;no offer  or invitation to offer  or solicitation of subscription with respect to any such securities listed or proposed to be listed in india is being made  or intended to be made  to the public  or to any member or section of the public in india  through or pursuant to this report &#39;,
+ &#39;sabeco ran large promotion campaign for the saigon special brand  featuring lucky draws for mercedes cars from sep to nov     bia saigon also became leicester city football clubofficial sleeve sponsor for the         season  following the announcement by the club in cy   that it was entering multi thbev &#39;,
+ &#39;south korea  this report is issued and distributed in south korea by cgs cimb securities  hong kong  limited  korea branch  cimb ry service of korea &#39;,
+ &#39;cgs cimb thailand may act or acts as market maker  and issuer and offerer of derivative warrants and structured note which may have the following securities as its underlying securities &#39;,
+ &#39;phillip securities research or persons associated with or connected to phillip securities research  including but not limited to its officers  directors  employees or persons involved in the issuance of this report may  from time to time maintain long or short position in securities referred to herein  or in related futures or options  purchase or sell  make market in  or engage in any other transaction involving such securities  and earn brokerage or other compensation in respect of the foregoing &#39;,
+ &#39;the analyst who prepared this research report is prohibited from receiving any compensation  incentive or bonus based on specific investment banking transactions or for providing specific recommendation for  or view of particular company &#39;,
+ &#39;this publication is strictly confidential and is for private circulation only to clients of chk &#39;,
+ &#39;recipients should rely on their own investigations and take their own professional advice before investment &#39;,
+ &#39;this publication is being supplied to you strictly on the basis that it will remain confidential &#39;,
+ &#39;this report is intended for general circulation only and does not take into account the specific investment objectives  financial situation or particular needs of any particular person &#39;,
+ &#39;in particular  cgs cimb and cimb disclaim all responsibility and liability for the views and opinions set out in this report &#39;,
+ &#39;the information and opinions in this report are not and should not be construed or considered as an offer  recommendation or solicitation to buy or sell the subject securities  related investments or other financial instruments or any derivative instrument  or any rights pertaining thereto &#39;,
+ &#39;you should independently evaluate particular investments and consult an independent financial adviser before dealing in any securities mentioned in this report &#39;,
+ &#39;this report is not directed to  or intended for distribution to or use by  any person or entity who is citizen or resident of or located in any locality  state  country or other jurisdiction where such distribution  publication  availability or use would be contrary to law or regulation &#39;,
+ &#39;this document does not constitute public offering of securities &#39;,
+ &#39;this report is prepared for general circulation &#39;,
+ &#39;this research report is not an offer of securities in indonesia &#39;,
+ &#39;it does not have regard to the specific investment objectives  financial situation and the particular needs of any recipient hereof &#39;,
+ &#39;neither cgs cimb or cimb  as the case may be  nor any of their respective affiliates  including cgifhl  cimbg and their related corporations  make any guarantee  representation or warranty  express or implied  as to the adequacy  accuracy  completeness  reliability or fairness of any such information and opinion contained in this report &#39;,
+ &#39;cgs cimbr  its affiliates and related corporations  their directors  associates  connected parties and or employees may own or have positions in specified products of the company ies  covered in this research report or any specified products related thereto and may from time to time add to or dispose of  or may be materially interested in  any such specified products &#39;,
+ &#39;it is intended for circulation amongst cgs   as the case may be  clients generally and does not have regard to the specific investment objectives  financial situation and the particular needs of any specific person who may receive this report &#39;,
+ &#39;finance costs likely concurrently increased to thb   bn  vs  thb   bn  due to higher interest costs  with  switch from bridging loan to long term bonds &#39;,
+ &#39;management shared it had beaten its vnd   tr target for cy   net profit  reporting cy   net profit of vnd   tr &#39;,
+ &#39;chk does not make market on other securities mentioned in the report &#39;,
+ &#39;nothing in this report shall be construed to be an offer or solicitation for the purchase or sale of any product &#39;,
+ &#39;the current prices yields in this issue are based upon closing prices from bloomberg as of the day preceding publication &#39;,
+ &#39;india  this report is issued and distributed in india by cgs   cimb india is subsidiary of cgs cimb securities international pte &#39;,
+ &#39;accordingly cgs cimbr is subject to the applicable rules under the faa unless it is able to avail itself to any prescribed exemptions &#39;,
+ &#39;aav  advanc  amata  aot  ap  banpu  bbl  bch  bcp  bcpg  bdms  beauty  bem  bgrim  bjc  bh  bla  bland  bpp  bts  cbg  centel  chg  ck  ckp  com   cpall  cpf  cpn  delta  dtac  ea  egco  epg  erw  esso  ggc  gfpt  global  glow  gpsc  gunkul  hana  hmpro  intuch  irpc  itd  ivl  kbank  kce  kkp  ktb  ktc  lh  lpn  major  mega  mint  mtls  ori  prm  psh  psl  ptg  ptt  pttep  pttgc  qh  ratch  robins  rs  sawad  scb  scc  sgp  siri  spali  sprc  sta  stec  super  tasco  tcap  thai  thani  tisco  tkn  tmb  toa  top  tpipl  tpipp  true  ttw  tu  tvo  uv  wha  whaup  work &#39;,
+ &#39;this report has been provided to you for personal use only and shall not be reproduced  distributed or published by you in whole or in part  for any purpose &#39;,
+ &#39;for any research report distributed by cibc  further disclosures related to cibc conflicts of interest can be found at https   researchcentral cibcwm com  &#39;,
+ &#39;the products mentioned in this report may not be suitable for all investors and person receiving or reading this report should seek advice from professional and financial adviser regarding the legal  business  financial  tax and other aspects including the suitability of such products  taking into account the specific investment objectives  financial situation or particular needs of that person  before making commitment to invest in any of such products &#39;,
+ &#39;reports relating to specific geographical area are produced by the corresponding cgs cimb  ction referenced below  or  in every other case except as otherwise stated herein  cgs cimb securities international pte &#39;,
+ &#39;the material distributed by cgs cimb uk has been prepared in accordance with cgs  policies for managing conflicts of interest arising as result of publication and distribution of this material &#39;,
+ &#39;the information  tools and material presented herein are not directed  intended for distribution to or use by  any person or entity in any jurisdiction or country where such distribution  publication  availability or use would be contrary to the applicable law or regulation or which would subject phillip securities research to any registration or licensing or other requirement  or penalty for contravention of such requirements within such jurisdiction &#39;,
+ &#39;investments will be denominated in various currencies including us dollars and euro and thus will be subject to any fluctuation in exchange rates between us dollars and euro or foreign currencies and the currency of your own jurisdiction &#39;,
+ &#39;thai beverage singapore  december         kgi securities  singapore  pte &#39;,
+ &#39;    total return over the next    months  hold       to      total return over the next    months  sell         total return over the next    months disclaimer this report is provided for information only and is not an offer or solicitation to deal in securities or to enter into any legal relations  nor an advice or recommendation with respect to such securities &#39;,
+ &#39;this takes our tp to &#39;,
+ &#39;neutral neutral rating means stocks in the sector have  on market cap weighted basis neutral absolute recommendation &#39;,
+ &#39; all of the foregoing is   however  as of the date of this report  neither kgi securities nor its representative who produced this report terest in  and kgi securities does not make any market in  the securities which are recommended in this report &#39;,
+ &#39;brewers  singapore   thai beverage  february                  country cgs cimb entity regulated by hong kong cgs cimb securities  hong kong  limited securities and futures commission hong kong india cgs cimb securities  india  private limited  securities and exchange board of india  sebi  indonesia pt cgs cimb sekuritas indonesia  financial services authority of indonesia singapore cgs cimb research pte &#39;,
+ &#39;    jalan yap kwan seng        kuala lumpur tel                fax                website  www poems com my hong kong phillip securities  hk  ltd united centre    queensway hong kong tel                fax                websites  www phillip com hk    japan phillip securities japan  ltd      nihonbashi kabuto cho chuo ku   tokyo          tel                 fax                 website  www phillip co jp indonesia pt phillip securities indonesia anz tower level jl jend sudirman kav jakarta        indonesia tel                  fax                  website  www phillip co id china phillip financial advisory  shanghai  co ltd no     yan an east road  ocean tower unit       postal code        tel                  fax                  website  www phillip com cn    thailand phillip securities  thailand  public co  ltd   th floor  vorawat building      silom road  silom  bangrak  bangkok       thailand tel                          fax                website www phillip co th france king   shaxson capital limited  rd floor     rue de la bienfaisance       paris france tel                fax                website  www kingandshaxson com united kingdom king   shaxson capital limited  th floor  candlewick house      cannon street  london  ec as tel                  fax                  website  www kingandshaxson com    united states phillip capital inc jackson blvd ste      the chicago board of trade building chicago  il       usa tel                 fax                 website  www phillipusa com australia phillip capital limited level         collins street melbourne  victoria       australia tel                  fax                  website  www phillipcapital com au sri lanka asha phillip securities limited  nd floor  lakshmans building  no &#39;,
+ &#39;we peg our sotp valuations to the lower ev ebitda band of global peers &#39;,
+ &#39;hong kong  this report is issued and distributed in hong kong by cgs cimb securities  hong kong  limited kong by the securities and futures commission for type    dealing in securities   type    advising on securities  and type    advising on corporate   brewers  singapore   thai beverage  february                  finance  activities &#39;,
+ &#39;the information contained in this research report is prepared from data believed to be correct and reliable at the time of issue of this report &#39;,
+ &#39;the value of investments may go down as well as up and those investing may  depending on the investments in question  lose more than the initial investment &#39;,
+ &#39;cgs cimb indonesia has no obligation to update its opinion or the information in this research report &#39;,
+ &#39;past performance of any product referred to in this report is not indicative of future results &#39;,
+ &#39;phillip securities research  or persons associated with or connected to phillip securities research  including but not limited to its officers  directors  employees or persons involved in the issuance of this report  may have participated in or invested in transactions with the issuer of the securities mentioned in this report  and may have performed services for or solicited business from such issuers &#39;,
+ &#39;less overtime  has translated to lower disposable income &#39;,
+ &#39;recipients of this report are to contact cgs cimb research pte ltd     raffles place         singapore land tower  singapore in respect of any   brewers  singapore   thai beverage  february                  matters arising from  or in connection with this report &#39;,
+ &#39;figure    forecast revisions     sources  cgs cimb research  company reports    figure    thaibev historical forward e trading band     sources  cimb  company reports          brewers  singapore   thai beverage  february                   figure    thaibev sum of parts valuations      sources  cgs cimb research  company reports    figure    peers comparison     sources  cimb  company reports    brewers  singapore   thai beverage  february                                        brewers  singapore   thai beverage  february                                      brewers  singapore   thai beverage  february                  disclaimer the content of this report  including the views and opinions expressed therein  and the information comprised therein  has been prepared by and belongs to cgs cimb or   as the case may be &#39;,
+ &#39;ltd  all rights reserved &#39;,
+ &#39;the distributor of this report has not been approved or licensed by the china securities regulatory commission or any other relevant regulatory authority or governmental agency in the prc &#39;,
+ &#39;the views and opinions in this research report are our own as of the date hereof and are subject to change &#39;,
+ &#39;please note that neither the german federal financial supervisory agency  bafin   nor any other supervisory authority exercises any control over the content of this report &#39;,
+ &#39;r thai institute of directors  as of august           are categorized into    companies that have declared their intention to join cac  and   companies certified by cac  the company  its director or management had been reportedly accused for breaching proper corporate governance regulations or charged with corruption &#39;,
+ &#39;cgs cimb securities  singapore  pte &#39;,
+ &#39;you represent prepared without taking into account the objectives  financial situation or needs of the individual recipient &#39;,
+ &#39;reports relating to specific geographical area are produced and distributed by the corresponding cgs cimb entity as listed in the table below &#39;,
+ &#39;stock price targets have an investment horizon of    months &#39;,
+ &#39;it is not an evaluation of operation and is not based on inside information &#39;,
+ &#39;ltd       financials  source  company data  kgi research  thai beverage singapore  december         kgi securities  singapore  pte &#39;,
+ &#39;this report is confidential &#39;,
+ &#39;if the financial services and markets act of the united kingdom or the rules of the financial conduct authority apply to recipient  our obligations owed to such recipient therein are unaffected &#39;,
+ &#39;  approved by  or filed or registered with  any indian regulator  including any registrar of companies in india  sebi  any indian stock exchange  or the reserve bank of india &#39;,
+ &#39;any discussion of the risks contained herein with respect to any product should not be considered to be disclosure of all risks or complete discussion of such risks &#39;,
+ &#39;                                creative technology singapore  september          kgi securities  singapore  pte &#39;,
+ &#39;this report shall not be considered as an offer to subscribe to  or used in connection with  any offer for subscription or sale or marketing or direct or indirect distribution of financial instruments and it is not intended as solicitation for the purchase of any financial instrument &#39;,
+ &#39;phillip securities research  or persons associated with or connected to phillip securities research  including but not limited its officers  directors  employees or persons involved in the issuance of this report  may have issued other material that is inconsistent with  or reach different conclusions from  the contents of this report &#39;,
+ &#39;the distribution of this report is not an offer to sell to any person in sweden or solicitation to any person in sweden to buy any instruments described herein and may not be forwarded to the public in sweden &#39;,
+ &#39;as of february           cgs cimbr does not have proprietary position in the recommended specified products in this report &#39;,
+ &#39;cimb has no obligation to update  revise or reaffirm its opinion or the information in this research reports after the date of this report &#39;,
+ &#39;ltd        rating  definition   kgi securities ommendations are based on an absolute return rating system &#39;,
+ &#39;this report is being issued outside the prc to limited number of institutional investors and may not be provided to any person other than the original recipient and may not be reproduced or used for any other purpose &#39;,
+ &#39;this publication constitutes research of non binding nature on the market situation and the investment instruments cited here at the time of the publication of the information &#39;,
+ &#39;hak is merkezi no &#39;,
+ &#39;unless otherwise specified  this report is based upon sources which cgs cimb or cimb  as the case may be  considers to be reasonable &#39;,
+ &#39;brewers  singapore   thai beverage  february                   underweight an underweight rating means investors should be positioned with below market weight in this country relative to benchmark &#39;,
+ &#39;canada  this research report has not been prepared in accordance with the disclosure requirements of dealer member rule       research restrictions and disclosure requirements of the investment industry regulatory organization of canada &#39;,
+ &#39;malaysia  this report is distributed in malaysia by cimb solely for the benefit of and for the exclusive use of our clients &#39;,
+ &#39;this report may not be published  circulated  reproduced or distributed and or redistributed in whole or in part by any recipient of this report to any other person without the prior written consent of kgi securities &#39;,
+ &#39;any investors wishing to purchase or otherwise deal in the securities covered in this report should contact the head of sales at cgs cimb securities  hong kong  limited &#39;,
+ &#39;underweight an underweight rating means stocks in the sector have  on market cap weighted basis negative absolute recommendation &#39;,
+ &#39;which may exist for certain persons entities &#39;,
+ &#39;no part of this report may be copied  photocopied  duplicated  stored or reproduced in any form by any means or   ii  redistributed or passed on  directly or indirectly  to any other person in whole or in part  for any purpose without the prior written consent of cgs cimb or cimb  as the case may be &#39;,
+ &#39;reports relating to malaysia are produced and distributed by cimb &#39;,
+ &#39;cgs cimbr does not make market on the securities mentioned in the report &#39;,
+ &#39;this report is general in nature and has been prepared for information purposes only &#39;,
+ &#39;the securities referred to in this research report have not been registered with the financial services authority  otoritas jasa keuangan  pursuant to relevant capital market laws and regulations  and may not be offered or sold within the territory of the republic of indonesia or to indonesian citizens through public offering or in circumstances which constitute an offer within the meaning of the indonesian capital market law and regulations &#39;,
+ &#39;china  region  the macau special administrative region or taiwan &#39;,
+ &#39;ltd  which is in turn is joint venture company of cgifhl and cimbg &#39;,
+ &#39;ltd  and cgs cimb securities  hong kong  limited do not hold  and are not required to hold an australian financial services license &#39;,
+ &#39;however  kgi securities makes no representation as to the accuracy or completeness of such sources or the information and kgi securities accepts no liability whatsoever for any loss or damage arising from the use of or reliance on the information &#39;,
+ &#39;this was encouraging as it implied that the positive sales growth seen since sep    was sustained &#39;,
+ &#39;where this material is labelled as non independent  it does not provide an impartial or objective assessment of the subject matter and does not  cannot remove research from here under the applicable rules of the financial conduct authority in the uk &#39;,
+ &#39;cgs cimb securities  usa  inc  has not managed or co managed public offering of any of the securities mentioned in the past    months &#39;,
+ &#39;any failure to comply with these terms and limitations may constitute violation of law &#39;,
+ &#39;australia  despite anything in this report to the contrary  this research is provided in australia by cgs cimb securities  singapore  pte &#39;,
+ &#39;however  phillip securities research does not make any representation or warranty  express or implied that such information or research is accurate  complete or appropriate or should be relied upon as such &#39;,
+ &#39;the lack of disposable income is not only confined to the rural sector but also the urban areas &#39;,
+ &#39;the details of the members of the group of companies of cgs cimb can be found at www cgs cimb com  cgifhl at www chinastock com hk en acg contactus index aspx and cimbg at www cimb com en who we are html &#39;,
+ &#39;  jalan stesen sentral    kuala lumpur sentral       kuala lumpur  malaysia  in respect of any matters arising from or in connection with this report &#39;,
+ &#39;kgi securities and its connected persons may have issued other reports expressing views different from the information and all views expressed in all reports of kgi securities and its connected persons are subject to change without notice &#39;,
+ &#39;cgs cimb  cimb  their respective affiliates and related corporations  including cgifhl  cimbg and their respective related corporations  and or their respective directors  associates  connected parties and or employees may own or have positions in securities of the company ies  covered in this research report or any securities related thereto and may from time to time add to or dispose of  or may be materially interested in  any such securities &#39;,
+ &#39;recipients of this report are to contact cimb  at   th floor menara cimb no &#39;,
+ &#39;figure    promotional campaign run for saigon special  figure    sleeve sponsorship for leicester city      sources  cgs cimb research  sabeco    sources  cgs cimb research  www lcfc com     figure    euromonitor estimates vietnam beer volumes to grow        per annum in cy sources  cgs cimb research  euromonitor    we estimate  qfy revenue grew to thb    bn  vs   qfy      thb    bn   including sabeco revenue &#39;,
+ &#39;france  only qualified investors within the meaning of french law shall have access to this report &#39;,
+ &#39;any investment or investment activity to which this material relates is available only to relevant persons and will be engaged in only with relevant persons &#39;,
+ &#39;this report contains only marketing information &#39;,
+ &#39;it is not intended for and does not deal with prohibitions on investment due to law jurisdiction issues etc &#39;,
+ &#39;thai beverage has not lost market share but is suffering from the sliding macro environment &#39;,
+ &#39;this report is strictly private and confidential and has not been reviewed by  deposited or registered with uae central bank or any other licensing authority or governmental agencies in the united arab emirates &#39;]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">y_train</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[11]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[1., 0., 0.],
+       [0., 0., 1.],
+       [1., 0., 0.],
+       [0., 0., 1.],
+       [1., 0., 0.],
+       [1., 0., 0.],
+       [1., 0., 0.],
+       [0., 0., 1.],
+       [0., 0., 1.],
+       [0., 0., 1.],
+       [0., 0., 1.],
+       [0., 0., 1.],
+       [0., 1., 0.],
+       [0., 0., 1.],
+       [0., 0., 1.],
+       [0., 0., 1.],
+       [0., 1., 0.],
+       [1., 0., 0.],
+       [1., 0., 0.],
+       [0., 1., 0.],
+       [0., 0., 1.],
+       [0., 0., 1.],
+       [0., 0., 1.],
+       [0., 0., 1.],
+       [0., 0., 1.],
+       [0., 0., 1.],
+       [1., 0., 0.],
+       [0., 0., 1.],
+       [0., 0., 1.],
+       [0., 1., 0.],
+       [1., 0., 0.],
+       [0., 0., 1.],
+       [0., 0., 1.],
+       [1., 0., 0.],
+       [1., 0., 0.],
+       [1., 0., 0.],
+       [1., 0., 0.],
+       [1., 0., 0.],
+       [0., 1., 0.],
+       [0., 1., 0.],
+       [0., 1., 0.],
+       [0., 1., 0.],
+       [1., 0., 0.],
+       [0., 1., 0.],
+       [1., 0., 0.],
+       [0., 0., 1.],
+       [0., 0., 1.],
+       [0., 1., 0.],
+       [0., 0., 1.],
+       [1., 0., 0.],
+       [1., 0., 0.],
+       [0., 0., 1.],
+       [1., 0., 0.],
+       [1., 0., 0.],
+       [0., 0., 1.],
+       [1., 0., 0.],
+       [1., 0., 0.],
+       [0., 1., 0.],
+       [0., 0., 1.],
+       [0., 1., 0.],
+       [0., 0., 1.],
+       [0., 0., 1.],
+       [1., 0., 0.],
+       [1., 0., 0.],
+       [1., 0., 0.],
+       [0., 1., 0.],
+       [0., 1., 0.],
+       [0., 0., 1.],
+       [1., 0., 0.],
+       [1., 0., 0.],
+       [0., 0., 1.],
+       [0., 1., 0.],
+       [0., 0., 1.],
+       [1., 0., 0.],
+       [1., 0., 0.],
+       [0., 1., 0.],
+       [1., 0., 0.],
+       [1., 0., 0.],
+       [1., 0., 0.],
+       [0., 1., 0.],
+       [0., 0., 1.],
+       [1., 0., 0.],
+       [0., 1., 0.],
+       [0., 1., 0.],
+       [0., 1., 0.],
+       [1., 0., 0.],
+       [0., 1., 0.],
+       [1., 0., 0.],
+       [0., 1., 0.],
+       [0., 0., 1.],
+       [0., 0., 1.],
+       [0., 0., 1.],
+       [0., 0., 1.],
+       [0., 0., 1.],
+       [1., 0., 0.],
+       [1., 0., 0.],
+       [1., 0., 0.],
+       [0., 0., 1.],
+       [1., 0., 0.],
+       [1., 0., 0.],
+       [0., 0., 1.],
+       [0., 0., 1.],
+       [1., 0., 0.],
+       [1., 0., 0.],
+       [0., 0., 1.],
+       [0., 0., 1.],
+       [1., 0., 0.],
+       [0., 1., 0.],
+       [1., 0., 0.],
+       [1., 0., 0.],
+       [1., 0., 0.],
+       [1., 0., 0.],
+       [1., 0., 0.],
+       [0., 0., 1.],
+       [0., 1., 0.],
+       [0., 0., 1.],
+       [0., 0., 1.],
+       [0., 0., 1.],
+       [0., 0., 1.],
+       [1., 0., 0.],
+       [0., 1., 0.],
+       [1., 0., 0.],
+       [1., 0., 0.],
+       [1., 0., 0.],
+       [1., 0., 0.],
+       [1., 0., 0.],
+       [1., 0., 0.],
+       [1., 0., 0.],
+       [1., 0., 0.],
+       [0., 1., 0.],
+       [1., 0., 0.],
+       [0., 0., 1.],
+       [1., 0., 0.],
+       [1., 0., 0.],
+       [0., 0., 1.],
+       [0., 0., 1.],
+       [0., 0., 1.],
+       [0., 1., 0.],
+       [1., 0., 0.],
+       [1., 0., 0.],
+       [0., 1., 0.],
+       [1., 0., 0.],
+       [1., 0., 0.],
+       [0., 0., 1.],
+       [0., 0., 1.],
+       [1., 0., 0.],
+       [1., 0., 0.],
+       [0., 0., 1.],
+       [1., 0., 0.],
+       [0., 1., 0.],
+       [0., 0., 1.],
+       [0., 1., 0.],
+       [0., 0., 1.],
+       [1., 0., 0.],
+       [0., 0., 1.],
+       [0., 0., 1.],
+       [0., 1., 0.],
+       [1., 0., 0.],
+       [0., 0., 1.],
+       [0., 0., 1.],
+       [1., 0., 0.],
+       [1., 0., 0.],
+       [0., 0., 1.],
+       [0., 1., 0.],
+       [0., 0., 1.],
+       [0., 0., 1.],
+       [0., 0., 1.],
+       [0., 1., 0.],
+       [0., 0., 1.],
+       [0., 0., 1.],
+       [1., 0., 0.],
+       [1., 0., 0.],
+       [1., 0., 0.],
+       [1., 0., 0.],
+       [0., 1., 0.],
+       [0., 0., 1.],
+       [1., 0., 0.],
+       [1., 0., 0.],
+       [1., 0., 0.],
+       [0., 0., 1.],
+       [0., 1., 0.],
+       [0., 0., 1.],
+       [0., 0., 1.],
+       [0., 0., 1.],
+       [1., 0., 0.],
+       [0., 1., 0.],
+       [0., 1., 0.],
+       [0., 0., 1.],
+       [0., 0., 1.],
+       [1., 0., 0.],
+       [0., 1., 0.],
+       [1., 0., 0.],
+       [0., 0., 1.],
+       [0., 1., 0.],
+       [0., 0., 1.],
+       [0., 0., 1.],
+       [0., 0., 1.],
+       [0., 0., 1.],
+       [1., 0., 0.],
+       [0., 1., 0.],
+       [0., 0., 1.],
+       [1., 0., 0.],
+       [1., 0., 0.],
+       [0., 1., 0.],
+       [0., 1., 0.],
+       [0., 0., 1.]], dtype=float32)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">y_train</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[12]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(206, 3)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">y_test</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[13]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(52, 3)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># creating word to index dictionary</span>
@@ -13600,7 +14145,7 @@ C:\Users\Derek Chong\AppData\Roaming\Python\Python37\site-packages\tensorboard\c
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">tokenizer</span><span class="o">.</span><span class="n">word_index</span>
@@ -13616,7 +14161,7 @@ C:\Users\Derek Chong\AppData\Roaming\Python\Python37\site-packages\tensorboard\c
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[16]:</div>
+    <div class="prompt output_prompt">Out[15]:</div>
 
 
 
@@ -14633,7 +15178,7 @@ C:\Users\Derek Chong\AppData\Roaming\Python\Python37\site-packages\tensorboard\c
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">X_train</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">texts_to_sequences</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span> <span class="c1"># turning list of texts into sequences</span>
@@ -14647,7 +15192,7 @@ C:\Users\Derek Chong\AppData\Roaming\Python\Python37\site-packages\tensorboard\c
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[24]:</div>
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
@@ -14663,7 +15208,7 @@ C:\Users\Derek Chong\AppData\Roaming\Python\Python37\site-packages\tensorboard\c
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[24]:</div>
+    <div class="prompt output_prompt">Out[17]:</div>
 
 
 
@@ -14680,7 +15225,7 @@ C:\Users\Derek Chong\AppData\Roaming\Python\Python37\site-packages\tensorboard\c
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[25]:</div>
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># adding 1 to vocab_size because of reserved 0 index</span>
@@ -14703,7 +15248,7 @@ C:\Users\Derek Chong\AppData\Roaming\Python\Python37\site-packages\tensorboard\c
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[26]:</div>
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">vocab_size</span>
@@ -14719,7 +15264,7 @@ C:\Users\Derek Chong\AppData\Roaming\Python\Python37\site-packages\tensorboard\c
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[26]:</div>
+    <div class="prompt output_prompt">Out[19]:</div>
 
 
 
@@ -14736,7 +15281,7 @@ C:\Users\Derek Chong\AppData\Roaming\Python\Python37\site-packages\tensorboard\c
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[27]:</div>
+<div class="prompt input_prompt">In&nbsp;[20]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span>
@@ -14752,7 +15297,7 @@ C:\Users\Derek Chong\AppData\Roaming\Python\Python37\site-packages\tensorboard\c
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[27]:</div>
+    <div class="prompt output_prompt">Out[20]:</div>
 
 
 
@@ -14769,7 +15314,7 @@ C:\Users\Derek Chong\AppData\Roaming\Python\Python37\site-packages\tensorboard\c
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[28]:</div>
+<div class="prompt input_prompt">In&nbsp;[21]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">X_test</span><span class="o">.</span><span class="n">shape</span>
@@ -14785,7 +15330,7 @@ C:\Users\Derek Chong\AppData\Roaming\Python\Python37\site-packages\tensorboard\c
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[28]:</div>
+    <div class="prompt output_prompt">Out[21]:</div>
 
 
 
@@ -14802,7 +15347,7 @@ C:\Users\Derek Chong\AppData\Roaming\Python\Python37\site-packages\tensorboard\c
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[30]:</div>
+<div class="prompt input_prompt">In&nbsp;[22]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">numpy</span> <span class="k">import</span> <span class="n">array</span>
@@ -14827,7 +15372,7 @@ C:\Users\Derek Chong\AppData\Roaming\Python\Python37\site-packages\tensorboard\c
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[31]:</div>
+<div class="prompt input_prompt">In&nbsp;[23]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">embedding_matrix</span> <span class="o">=</span> <span class="n">zeros</span><span class="p">((</span><span class="n">vocab_size</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
@@ -14844,7 +15389,7 @@ C:\Users\Derek Chong\AppData\Roaming\Python\Python37\site-packages\tensorboard\c
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[34]:</div>
+<div class="prompt input_prompt">In&nbsp;[24]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
@@ -14852,10 +15397,13 @@ C:\Users\Derek Chong\AppData\Roaming\Python\Python37\site-packages\tensorboard\c
 <span class="n">embedding_layer</span> <span class="o">=</span> <span class="n">Embedding</span><span class="p">(</span><span class="n">vocab_size</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="p">[</span><span class="n">embedding_matrix</span><span class="p">],</span> <span class="n">input_length</span><span class="o">=</span><span class="n">max_length</span> <span class="p">,</span> <span class="n">trainable</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">embedding_layer</span><span class="p">)</span>
 
-<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Conv1D</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Conv1D</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.5</span><span class="p">))</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layers</span><span class="o">.</span><span class="n">GlobalMaxPooling1D</span><span class="p">())</span>
-<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;sigmoid&#39;</span><span class="p">))</span>
-<span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;adam&#39;</span><span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="s1">&#39;binary_crossentropy&#39;</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;acc&#39;</span><span class="p">])</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;softmax&#39;</span><span class="p">))</span>
+
+
+<span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;adam&#39;</span><span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="s1">&#39;categorical_crossentropy&#39;</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">])</span>
 </pre></div>
 
     </div>
@@ -14872,11 +15420,22 @@ C:\Users\Derek Chong\AppData\Roaming\Python\Python37\site-packages\tensorboard\c
 
 
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>W0815 00:17:56.400995 23248 deprecation_wrapper.py:119] From C:\ProgramData\Anaconda3\lib\site-packages\keras\optimizers.py:790: The name tf.train.Optimizer is deprecated. Please use tf.compat.v1.train.Optimizer instead.
+<pre>WARNING: Logging before flag parsing goes to stderr.
+W0817 23:15:35.870022 14368 deprecation_wrapper.py:119] From C:\ProgramData\Anaconda3\lib\site-packages\keras\backend\tensorflow_backend.py:74: The name tf.get_default_graph is deprecated. Please use tf.compat.v1.get_default_graph instead.
 
-W0815 00:17:56.458945 23248 deprecation.py:323] From C:\ProgramData\Anaconda3\lib\site-packages\tensorflow\python\ops\nn_impl.py:180: add_dispatch_support.&lt;locals&gt;.wrapper (from tensorflow.python.ops.array_ops) is deprecated and will be removed in a future version.
+W0817 23:15:35.911989 14368 deprecation_wrapper.py:119] From C:\ProgramData\Anaconda3\lib\site-packages\keras\backend\tensorflow_backend.py:517: The name tf.placeholder is deprecated. Please use tf.compat.v1.placeholder instead.
+
+W0817 23:15:35.916986 14368 deprecation_wrapper.py:119] From C:\ProgramData\Anaconda3\lib\site-packages\keras\backend\tensorflow_backend.py:4138: The name tf.random_uniform is deprecated. Please use tf.random.uniform instead.
+
+W0817 23:15:35.927981 14368 deprecation_wrapper.py:119] From C:\ProgramData\Anaconda3\lib\site-packages\keras\backend\tensorflow_backend.py:174: The name tf.get_default_session is deprecated. Please use tf.compat.v1.get_default_session instead.
+
+W0817 23:15:35.927981 14368 deprecation_wrapper.py:119] From C:\ProgramData\Anaconda3\lib\site-packages\keras\backend\tensorflow_backend.py:181: The name tf.ConfigProto is deprecated. Please use tf.compat.v1.ConfigProto instead.
+
+W0817 23:15:36.000938 14368 deprecation.py:506] From C:\ProgramData\Anaconda3\lib\site-packages\keras\backend\tensorflow_backend.py:3445: calling dropout (from tensorflow.python.ops.nn_ops) with keep_prob is deprecated and will be removed in a future version.
 Instructions for updating:
-Use tf.where in 2.0, which has the same broadcast rule as np.where
+Please use `rate` instead of `keep_prob`. Rate should be set to `rate = 1 - keep_prob`.
+W0817 23:15:36.032920 14368 deprecation_wrapper.py:119] From C:\ProgramData\Anaconda3\lib\site-packages\keras\optimizers.py:790: The name tf.train.Optimizer is deprecated. Please use tf.compat.v1.train.Optimizer instead.
+
 </pre>
 </div>
 </div>
@@ -14894,7 +15453,7 @@ Use tf.where in 2.0, which has the same broadcast rule as np.where
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[35]:</div>
+<div class="prompt input_prompt">In&nbsp;[25]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
@@ -14917,16 +15476,18 @@ Use tf.where in 2.0, which has the same broadcast rule as np.where
 <pre>_________________________________________________________________
 Layer (type)                 Output Shape              Param #   
 =================================================================
-embedding_2 (Embedding)      (None, 100, 100)          142700    
+embedding_1 (Embedding)      (None, 100, 100)          142700    
 _________________________________________________________________
-conv1d_2 (Conv1D)            (None, 96, 128)           64128     
+conv1d_1 (Conv1D)            (None, 100, 128)          12928     
+_________________________________________________________________
+dropout_1 (Dropout)          (None, 100, 128)          0         
 _________________________________________________________________
 global_max_pooling1d_1 (Glob (None, 128)               0         
 _________________________________________________________________
-dense_1 (Dense)              (None, 1)                 129       
+dense_1 (Dense)              (None, 3)                 387       
 =================================================================
-Total params: 206,957
-Trainable params: 64,257
+Total params: 156,015
+Trainable params: 13,315
 Non-trainable params: 142,700
 _________________________________________________________________
 None
@@ -14940,10 +15501,10 @@ None
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[43]:</div>
+<div class="prompt input_prompt">In&nbsp;[26]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">history</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">validation_split</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">history</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">batch_size</span> <span class="o">=</span> <span class="mi">64</span><span class="p">,</span> <span class="n">epochs</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">validation_split</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
 
 <span class="n">score</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
@@ -14961,29 +15522,42 @@ None
     <div class="prompt"></div>
 
 
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>W0817 23:15:36.299778 14368 deprecation.py:323] From C:\ProgramData\Anaconda3\lib\site-packages\tensorflow\python\ops\math_grad.py:1250: add_dispatch_support.&lt;locals&gt;.wrapper (from tensorflow.python.ops.array_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.where in 2.0, which has the same broadcast rule as np.where
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Train on 164 samples, validate on 42 samples
 Epoch 1/10
-164/164 [==============================] - 0s 652us/step - loss: -5.9294 - acc: 0.6280 - val_loss: -0.0724 - val_acc: 0.2381
+164/164 [==============================] - 0s 2ms/step - loss: 2.3001 - acc: 0.1890 - val_loss: 1.1644 - val_acc: 0.2857
 Epoch 2/10
-164/164 [==============================] - 0s 811us/step - loss: -5.9294 - acc: 0.6280 - val_loss: -0.1367 - val_acc: 0.2381
+164/164 [==============================] - 0s 475us/step - loss: 1.2231 - acc: 0.3841 - val_loss: 1.1671 - val_acc: 0.2857
 Epoch 3/10
-164/164 [==============================] - 0s 615us/step - loss: -5.9293 - acc: 0.6280 - val_loss: -0.1876 - val_acc: 0.2381
+164/164 [==============================] - 0s 536us/step - loss: 1.2378 - acc: 0.4207 - val_loss: 1.2723 - val_acc: 0.2619
 Epoch 4/10
-164/164 [==============================] - 0s 795us/step - loss: -5.9293 - acc: 0.6280 - val_loss: -0.2239 - val_acc: 0.2381
+164/164 [==============================] - 0s 646us/step - loss: 1.4119 - acc: 0.4634 - val_loss: 1.2649 - val_acc: 0.2619
 Epoch 5/10
-164/164 [==============================] - 0s 859us/step - loss: -5.9293 - acc: 0.6280 - val_loss: -0.2487 - val_acc: 0.2381
+164/164 [==============================] - 0s 652us/step - loss: 1.3708 - acc: 0.4451 - val_loss: 1.2110 - val_acc: 0.3095
 Epoch 6/10
-164/164 [==============================] - 0s 914us/step - loss: -5.9293 - acc: 0.6280 - val_loss: -0.2650 - val_acc: 0.2381
+164/164 [==============================] - 0s 573us/step - loss: 1.1808 - acc: 0.5305 - val_loss: 1.1565 - val_acc: 0.3095
 Epoch 7/10
-164/164 [==============================] - 0s 865us/step - loss: -5.9292 - acc: 0.6280 - val_loss: -0.2719 - val_acc: 0.2381
+164/164 [==============================] - 0s 524us/step - loss: 1.0747 - acc: 0.5122 - val_loss: 1.1382 - val_acc: 0.2857
 Epoch 8/10
-164/164 [==============================] - 0s 920us/step - loss: -5.9292 - acc: 0.6280 - val_loss: -0.2713 - val_acc: 0.2381
+164/164 [==============================] - 0s 524us/step - loss: 1.0209 - acc: 0.5061 - val_loss: 1.1597 - val_acc: 0.2857
 Epoch 9/10
-164/164 [==============================] - 0s 865us/step - loss: -5.9292 - acc: 0.6280 - val_loss: -0.2659 - val_acc: 0.2381
+164/164 [==============================] - 0s 518us/step - loss: 1.0088 - acc: 0.5183 - val_loss: 1.1752 - val_acc: 0.2381
 Epoch 10/10
-164/164 [==============================] - 0s 835us/step - loss: -5.9293 - acc: 0.6280 - val_loss: -0.2558 - val_acc: 0.2381
-52/52 [==============================] - 0s 404us/step
+164/164 [==============================] - 0s 555us/step - loss: 1.0292 - acc: 0.4573 - val_loss: 1.1651 - val_acc: 0.1905
+52/52 [==============================] - 0s 96us/step
 </pre>
 </div>
 </div>
@@ -14994,7 +15568,7 @@ Epoch 10/10
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[44]:</div>
+<div class="prompt input_prompt">In&nbsp;[27]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test Score:&quot;</span><span class="p">,</span> <span class="n">score</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
@@ -15015,8 +15589,8 @@ Epoch 10/10
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Test Score: 0.3430449366569519
-Test Accuracy: 0.21153846268470472
+<pre>Test Score: 1.0981920132270226
+Test Accuracy: 0.42307692536940944
 </pre>
 </div>
 </div>
@@ -15027,7 +15601,7 @@ Test Accuracy: 0.21153846268470472
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[45]:</div>
+<div class="prompt input_prompt">In&nbsp;[28]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -15067,7 +15641,7 @@ Test Accuracy: 0.21153846268470472
 
 
 <div class="output_png output_subarea ">
-<img src="data:image/png;base64,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
+<img src="data:image/png;base64,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
 "
 >
 </div>
@@ -15082,7 +15656,7 @@ Test Accuracy: 0.21153846268470472
 
 
 <div class="output_png output_subarea ">
-<img src="data:image/png;base64,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
+<img src="data:image/png;base64,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
 "
 >
 </div>
@@ -15105,11 +15679,7 @@ Test Accuracy: 0.21153846268470472
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># for loading of GloVe file, only if you need it.</span>
-
-<span class="kn">import</span> <span class="nn">chakin</span>
-
-<span class="n">chakin</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">number</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">save_dir</span><span class="o">=</span><span class="s1">&#39;./&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span> 
 </pre></div>
 
     </div>
